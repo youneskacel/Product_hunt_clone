@@ -1,0 +1,135 @@
+.navbar{
+    display : flex;
+    height : 12vh;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+#searchBox{
+    margin-left : 10px;
+    border-radius: 5px;
+    border : 0px;
+    background-color: rgb(238, 238, 238);
+    height : 30px;
+}
+
+#siBtn{
+    background-color: white;
+    border : 0px;
+}
+
+#suBtn{
+    background-color: tomato;
+    border : 0px;
+    border-radius: 5px;
+    color : white;
+    
+}
+
+
+.main{
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding : 40px 10px;
+}
+.lwGrid{
+    width : 60vw;
+    height : 40vh;
+    padding : 20px 20px;
+    border-radius: 10px;
+    border : 1px solid rgba(0, 0, 0, 0.185);
+    display: grid;
+    grid-template-columns: 28vw 28vw;
+}
+
+.lwcard{
+    width : 28vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.descBody{
+    font-size: 0.8em;
+    color: rgb(77, 76, 76);
+    width : 100%;
+}
+
+.today{
+    width : 100%;
+    margin-top: 40px;
+    
+}
+.todayGrid{
+    border:1px solid rgba(0, 0, 0, 0.185) ;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.todayCard{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(194, 194, 194);
+    height : 20vh;
+}
+
+.todayCard:hover{
+    background-color: rgba(108, 151, 199, 0.05);
+}
+
+.todayCard .descbody{
+    margin-left: 15px;
+}
+.todayCard .refs{
+    display : flex;
+    width: 10vw;
+    justify-content: space-between;
+    margin-left: 20px;
+    color: rgba(0, 0, 0, 0.541);
+}
+.descCont{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    
+}
+
+/* cote droit ---------------------------------------------------*/
+.mainRight{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.storycard{
+    display: flex;
+    align-items: center;
+    width : 25vw;
+    border : 1px solid rgba(0, 0, 0, 0.185);
+    border-radius: 10px;
+    padding :5px;
+    height : 10vh;
+    justify-content: flex-start;
+    
+}
+
+.upcomingGrid{
+    width:  25vw;
+    border : 1px solid rgba(0, 0, 0, 0.185);
+    border-radius: 10px;
+    margin-top: 20px;
+
+}
+
+.upcomingCard{
+    display: flex;
+    align-items: center;
+    height : 15vh;
+    padding : 0 5px;
+    border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+.upcoming{
+    margin-top: 50px;
+}
