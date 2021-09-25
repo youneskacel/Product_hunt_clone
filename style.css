@@ -31,7 +31,6 @@
     
     display: flex;
     justify-content: space-around;
-    align-items: center;
     padding : 40px 10px;
 }
 .lwGrid{
@@ -66,6 +65,7 @@
     border:1px solid rgba(0, 0, 0, 0.185) ;
     border-radius: 10px;
     margin-top: 20px;
+    padding: 0 20px
 }
 
 .todayCard{

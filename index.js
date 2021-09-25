@@ -6,7 +6,7 @@ var bestProducts = []
 
 const getProductsFromToday = () => {
     const today = new Date().toLocaleDateString()
-    fetch(API_URL + `/posts?day=${today}`, {
+    return fetch(API_URL + `/posts?day=${today}`, {
         headers: {
             Authorization: TOKEN
         }
@@ -45,6 +45,27 @@ const injectBestProducts = () => {
     document.getElementById('lwContainer').innerHTML = htmlToInject
 }
 
+const injectTodaysProducts = () => {
+    var htmlToInject = ''
+    for (let index = 0; index < todaysPosts.length; index++) {
+        const { thumbnail, tagline, name } = todaysPosts[index];
+        htmlToInject += `<div class="todayCard">
+                        <img src="${thumbnail.image_url}" alt="" height="70px" width="70px">
+                        <div class="descCont">
+                            <div class="descbody">
+                                <h6>${name}</h6>
+                                <p>${tagline}</p>
+                            </div>
+                            <div class="refs">
+                                <p>Free options</p>
+                                <p>Prodctivity</p>
+                            </div>
+                        </div>
+                    </div>`
+    }
+    document.getElementById('todays-container').innerHTML = htmlToInject
+}
+
 const _filterBestProducts = (products) => {
     const sorted = products.sort((a, b) => b.votes_count - a.votes_count)
     return sorted.slice(0, 4)
@@ -54,4 +75,43 @@ const _filterBestProducts = (products) => {
 
 // FUNCTION CALLS
 
-getBestProductsFromLastWeek().then(() => injectBestProducts())
+getBestProductsFromLastWeek().then(() => {
+    injectBestProducts()
+    var ctx = document.getElementById('barChart').getContext('2d');
+
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: bestProducts.map(e => e.name),
+            datasets: [{
+                label: '# of Votes',
+                data: bestProducts.map(e => e.votes_count),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+})
+getProductsFromToday().then(() => injectTodaysProducts())
